@@ -9,5 +9,7 @@ var Messages = {
 
   // TODO: Define methods which allow you to retrieve from,
   // add to, and generally interact with the messages.
-
+  
 };
+//console.log(Messages._data);
+//console.log(1+1);

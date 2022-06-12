@@ -4,9 +4,13 @@
 
 var App = {
 
-  $spinner: $('.spinner img'),
+  $spinner: $('.spinner img'),//as selector get img with class name spinner
 
   username: 'anonymous',
+
+  //currentRoomName: '',
+
+  //messages: new Messages(),
 
   initialize: function() {
     App.username = window.location.search.substr(10);
@@ -18,7 +22,7 @@ var App = {
     // Fetch initial batch of messages
     App.startSpinner();
     App.fetch(App.stopSpinner);
-
+    //App.stopSpinner();
     // TODO: Make sure the app loads data from the API
     // continually, instead of just once at the start.
   },
@@ -26,10 +30,15 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
+      console.log(data);//???????????
+      Messages._data = data;
+      MessagesView.render();
+      //Room.render();
+
 
       // TODO: Use the data to update Messages and Rooms
       // and re-render the corresponding views.
+      callback.call();
     });
   },
 
